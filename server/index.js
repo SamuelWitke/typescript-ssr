@@ -7,7 +7,7 @@ var App_1 = require("../src/App");
 var html_1 = require("./html");
 var app = express();
 var PORT = parseFloat(process.env.PORT) || 3000;
-app.use(express.static("dist"));
+app.use(express.static("build"));
 app.get("**", function (req, res) {
     var body = server_1.renderToString(React.createElement(App_1.App));
     res.send(html_1["default"]({

@@ -1,56 +1,23 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const tsImportPluginFactory = require('ts-import-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     context: resolve(__dirname, 'src'),
-    entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        // bundle the client for webpack-dev-server
-        // and connect to the provided endpoint
-        'webpack/hot/only-dev-server',
-        // bundle the client for hot reloading
-        // only- means to only hot reload for successful updates
-        './index.tsx'
-        // the entry point of our app
-    ],
+    entry: './index.tsx',
     output: {
         filename: 'hotloader.js',
-        // the output bundle
         path: resolve(__dirname, 'dist'), 
-        publicPath: '/'
-        // necessary for HMR to know where to load the hot update chunks
     },
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    devServer: {
-        port: '8080',
-        // Change it if other port needs to be used
-        hot: true,
-        // enable HMR on the server
-        noInfo: true,
-        quiet: false,
-        // minimize the output to terminal.
-        contentBase: resolve(__dirname, 'src'),
-        // match the output path
-        publicPath: '/'
-        // match the output `publicPath`
-    },
     module: {
-        rules: [
-            {
-                enforce: "pre",                
-                test: /\.(ts|tsx)?$/, 
-                loader: 'tslint-loader',
-                exclude: [resolve(__dirname, "node_modules")],
-            },             
+        rules: [            
             { 
                 test: /\.(ts|tsx)?$/, 
                 use: [
@@ -70,8 +37,7 @@ module.exports = {
                             }
                         },
                     }, 
-                ],
-                exclude: [resolve(__dirname, "node_modules")],                
+                ] 
             },
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
             {
@@ -95,12 +61,10 @@ module.exports = {
             filename: "style.css",
             chunkFilename: "[id].css"
           }),
-        new webpack.HotModuleReplacementPlugin(),
-        // enable HMR globally
-        new webpack.NamedModulesPlugin(),
-        // prints more readable module names in the browser console on HMR updates
         new HtmlWebpackPlugin({template: resolve(__dirname, 'src/index.html')}),
-        // inject <script> in html file. 
-        new OpenBrowserPlugin({url: 'http://localhost:8080'}),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        }),
     ],
 };
+
