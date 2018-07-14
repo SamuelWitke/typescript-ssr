@@ -1,14 +1,20 @@
 import * as express from 'express';
-import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import App from '../shared/App';
 import html from './html';
+import { Provider } from "react-redux";
+import * as React from "react";
+import configureStore from "../shared/configureStore";
 var app = express();
 var PORT = 8000;
 app.get("**", function (req, res) {
-    var body = renderToString(React.createElement(App));
+    var store = configureStore();
+    var initialData = store.getState();
+    var body = renderToString(React.createElement(Provider, { store: store },
+        React.createElement(App, null)));
     res.send(html({
-        body: body
+        body: body,
+        initialData: initialData
     }));
 });
 app.listen(PORT, function () {

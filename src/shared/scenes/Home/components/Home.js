@@ -17,5 +17,7 @@ function Hello(_a) {
 exports["default"] = Hello;
 // helpers
 function getExclamationMarks(numChars) {
-    return Array(numChars + 1).join('!');
+    console.log(numChars);
+    var array = new Array(numChars + 1);
+    return array.join('!');
 }

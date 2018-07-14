@@ -2,13 +2,16 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import  App  from "../shared/App";
-import store from "../shared/configureStore";
+import configureStore from "../shared/configureStore";
+
+const store = configureStore();
+
 
 
 ReactDOM.render(
 	<Provider store={store}>
-	<App/>
+		<App/>
 	</Provider>
-		,
-    document.getElementById("root")
+	,
+	document.getElementById("root")
 );
