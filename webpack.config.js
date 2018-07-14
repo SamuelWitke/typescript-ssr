@@ -1,6 +1,6 @@
-var path = require("path");
+const path = require("path");
 
-var config = {
+const config = {
 
 	/* The entry point of the application. Webpack uses this information to 
 				create the dependency tree which is used to bundle the scripts.*/
@@ -9,7 +9,7 @@ var config = {
 	/* This information is used to give the name of the bundled file and the 
 										location of the bundled file. */
 	output: {
-		path: path.resolve(__dirname, "build"),
+		path: path.resolve(__dirname, "/build/"),
 		publicPath: "/build/",
 		filename: "bundle.js"
 	},
@@ -30,7 +30,16 @@ var config = {
 			test: /\.tsx?$/,
 			loader: "ts-loader",
 			exclude: /node_modules/
-		}],
+		},
+			{
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					'css-loader'
+				]
+			}
+		],
+
 		/* 
 		 * Define the loaders to be used. Regex will test the type of files on 
 		 * which the loader is to be applied. The excluded files are also mentioned.

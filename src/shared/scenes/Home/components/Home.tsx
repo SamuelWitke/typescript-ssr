@@ -1,35 +1,44 @@
 import * as React from 'react';
+import { Dropdown, Segment } from 'semantic-ui-react'
+import './Home.css';
 
-export interface Props {
-	name: string;
-	enthusiasmLevel?: number;
-	onIncrement?: () => void;
-	onDecrement?: () => void;
+interface State {
+	selectedId: number,
 }
 
-function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
-	if (enthusiasmLevel <= 0) {
-		throw new Error('You could be a little more enthusiastic. :D');
-	}
+class Home extends React.Component<{},State> {
+	public state: State = {
+		selectedId: 999 
+	};
 
-	return (
-		<div className="hello">
-			<div className="greeting">
-				Hello {name + getExclamationMarks(enthusiasmLevel)}
-			</div>
+	render() {
+		return (
 			<div>
-				<button onClick={onDecrement}>-</button>
-				<button onClick={onIncrement}>+</button>
+				{ this.state.selectedId == null ?
+				<div> Get good </div>	
+				: 
+					<Segment>
+						<Dropdown
+							placeholder='Select a Book'
+							options={[
+								{ text: 'Harry Potter', value: 1 },
+								{ text: 'Lord of the Rings', value: 2 },
+								{ text: 'Game of Thrones', value: 3 },
+								{ text: 'Sherlock Holmes', value: 4 },
+								{ text: 'Murder in the Orient Express', value: 5 },
+								{ text: 'Neuromancer', value: 6 },
+								{ text: 'Ready Player One', value: 7 },
+							]}
+							onChange={(e, selected)=> this.setState((prevState) => {selectedId: selected.value})}
+							fluid
+							search
+							selection
+						/>
+					</Segment>
+					}
 			</div>
-		</div>
-		);
+			);
+	}
 }
 
-export default Hello;
-
-// helpers
-function getExclamationMarks(numChars: number) {
-	console.log(numChars);
-	const array = new Array(numChars + 1);
-	return array.join('!');
-}
+export default Home;

@@ -1,3 +1,0 @@
-export var INCREMENT_ENTHUSIASM = 'INCREMENT_ENTHUSIASM';
-export var DECREMENT_ENTHUSIASM = 'DECREMENT_ENTHUSIASM';
-//# sourceMappingURL=example.js.map
