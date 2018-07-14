@@ -1,15 +1,16 @@
 import * as express from 'express';
+import { Request, Response, } from 'express'
 import * as React from 'react';
 import { renderToString } from 'react-dom/server';
-import { App } from '../src/App'; 
+import App  from '../shared/App'; 
 import html from './html';
 
 const app: express.Application = express();
-const PORT: number = parseFloat(process.env.PORT) || 3000;
+const PORT: number =8000;
 
-app.get("**", (req, res) => {
+app.get("**", (req: Request, res: Response): void => {
 	const body = renderToString(React.createElement(App));
-	res.send(
+	(<any>res).send(
 		html({
 			body
 		})
