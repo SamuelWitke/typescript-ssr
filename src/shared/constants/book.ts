@@ -1,0 +1,3 @@
+export const BOOK_REQUESTING = 'BOOK_REQUESTING';
+export const BOOK_SUCCESS = 'BOOK_SUCCESS';
+export const BOOK_FAILURE = 'BOOK_FAILURE';

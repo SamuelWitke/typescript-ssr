@@ -1,6 +1,6 @@
 import Hello from './components/Home';
 import * as actions from '../../actions/example';
-import { StoreState } from '../../types/example';
+import { StoreState } from '../../types/';
 import { connect, Dispatch } from 'react-redux';
 
 export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {

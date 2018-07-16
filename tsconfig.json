@@ -6,10 +6,10 @@
         "lib": [
             "dom",
             "dom.iterable",
-            "es5",
-            "es2015",
+            "es6",
             "es2016"
           ],
+    		"target": "es5",
         "sourceMap": true,
         "allowJs": true,
         "jsx": "react",
