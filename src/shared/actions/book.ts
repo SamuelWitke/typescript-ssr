@@ -1,6 +1,4 @@
-import { 
-	BOOK_REQUESTING, BOOK_SUCCESS, BOOK_FAILURE, 
-} from '../constants/book';
+import {  BOOK_REQUESTING, BOOK_SUCCESS, BOOK_FAILURE,  } from '../constants/book';
 
 import {
 	SIMILAR_FAILURE,
@@ -9,7 +7,6 @@ import {
 } from '../constants/request';
 
 import { Dispatch } from "redux";
-
 import BOOK from '../types/book'
 
 
@@ -18,7 +15,7 @@ const entryLoaded = (book : BOOK) => ({ type: BOOK_SUCCESS, payload: book });
 const entryLoadError = () => ({ type: BOOK_FAILURE });
 
 export const requestBook = (id : number) => (
-	(dispatch: Dispatch<any>, api : any) : Promise<any> => {
+	(dispatch: Dispatch<any>, getState: any, api : any) : any => {
 		dispatch(entryLoading(id));
 		return api.fetchBook(id)
 			.then(( book : BOOK) => {
@@ -36,7 +33,7 @@ const similarEntriesLoaded = (books : BOOK) => ({ type: SIMILAR_SUCCESS, payload
 const similarEntriesLoadError = () => ({ type: SIMILAR_FAILURE });
 
 export const requestBooksByTags = (id : number, tags : Array<string>) => (
-	(dispatch : Dispatch<any>, api : any) => {
+	(dispatch : Dispatch<any>, getState: any, api : any) => {
 		dispatch(similarEntriesLoading(tags));
 		api.fetchBooksByTags(tags)
 			.then( (books : any ) => {

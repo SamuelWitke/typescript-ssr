@@ -1,5 +1,4 @@
-import intersection from 'lodash';
-import BOOK from '../types/book';
+import * as _ from 'lodash';
 
 const books = [
 	{
@@ -63,7 +62,7 @@ const fetchBook = (id : number) => {
 };
 
 const fetchBooksByTags = (tags : Array<string>) => {
-	const similar = books.filter(p => intersection(p.tags, tags).length > 0)
+	const similar = books.filter(p => _.intersection(p.tags, tags).length > 0)
 	return fakeRequest(similar);
 };
 
@@ -86,4 +85,3 @@ function fakeRequest(data : any) {
 
 
 export default { fetchBook, fetchBooksByTags, getUser, addToCart };
-

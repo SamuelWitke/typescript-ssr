@@ -6,10 +6,15 @@ interface State {
 	selectedId: number,
 }
 
-class Home extends React.Component<{},State> {
+class Home extends React.Component<any,State> {
 	public state: State = {
 		selectedId: 999 
 	};
+
+	constructor(props : any) {
+		super(props);
+		this.props.requestBookAndSimilars(1);
+	}
 
 	render() {
 		return (
