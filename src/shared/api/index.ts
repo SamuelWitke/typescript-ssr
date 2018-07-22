@@ -1,4 +1,6 @@
 import {intersection} from 'lodash'
+import {Promise} from 'es6-promise'
+
 
 const books = [
 	{
@@ -57,7 +59,7 @@ const books = [
 ];
 
 const fetchBook = (id : number) => {
-	const book = books.find( (book) => book.id === id );
+	const book = books.filter( (book) => book.id === id );
 	return fakeRequest(book);
 };
 
@@ -76,7 +78,7 @@ const addToCart = (data : any) => {
 
 // Returns a promise for data that resolves after a random timeout (0 to 500 ms).
 function fakeRequest(data : any) {
-	return new Promise(resolve => {
+	return new Promise<any>(resolve => {
 		setTimeout(()=>{
 			resolve(data);
 		}, (Math.random() * 100));

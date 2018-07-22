@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, Segment } from 'semantic-ui-react'
 import Book from './components/Book';
-import './Home.css';
+//import './Home.css';
 
 type State = {
 	selectedId: number | null,

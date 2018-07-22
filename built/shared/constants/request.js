@@ -1,0 +1,4 @@
+export var SIMILAR_REQUESTING = 'SIMILAR_REQUESTING';
+export var SIMILAR_SUCCESS = 'SIMILAR_SUCCESS';
+export var SIMILAR_FAILURE = 'SIMILAR_FAILURE';
+//# sourceMappingURL=request.js.map

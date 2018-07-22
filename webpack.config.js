@@ -9,7 +9,7 @@ const config = {
 	/* This information is used to give the name of the bundled file and the 
 										location of the bundled file. */
 	output: {
-		path: path.resolve(__dirname, "/build/"),
+		path: path.resolve(__dirname, "build/"),
 		publicPath: "/build/",
 		filename: "bundle.js"
 	},

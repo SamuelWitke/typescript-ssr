@@ -10,6 +10,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 exports.__esModule = true;
 var example_1 = require("../constants/example");
 function enthusiasm(state, action) {
+    if (state === void 0) { state = {}; }
     switch (action.type) {
         case example_1.INCREMENT_ENTHUSIASM:
             return __assign({}, state, { enthusiasmLevel: state.enthusiasmLevel + 1 });
@@ -19,4 +20,4 @@ function enthusiasm(state, action) {
             return state;
     }
 }
-exports.enthusiasm = enthusiasm;
+exports["default"] = enthusiasm;

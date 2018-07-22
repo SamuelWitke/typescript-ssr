@@ -7,7 +7,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from '../constants/example';
-export function enthusiasm(state, action) {
+export default function enthusiasm(state, action) {
+    if (state === void 0) { state = {}; }
     switch (action.type) {
         case INCREMENT_ENTHUSIASM:
             return __assign({}, state, { enthusiasmLevel: state.enthusiasmLevel + 1 });

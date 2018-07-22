@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "outDir": "./built/",
-        "module": "esnext",
-        "target": "es5",
+        "module": "commonjs",
+        "target": "es2015",
         "lib": [
             "dom",
             "dom.iterable",
             "es6",
-            "es2016"
+        		"es2017"
           ],
     		"target": "es5",
         "sourceMap": true,
