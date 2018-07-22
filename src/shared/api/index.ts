@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import {intersection} from 'lodash'
 
 const books = [
 	{
@@ -62,7 +62,7 @@ const fetchBook = (id : number) => {
 };
 
 const fetchBooksByTags = (tags : Array<string>) => {
-	const similar = books.filter(p => _.intersection(p.tags, tags).length > 0)
+	const similar = books.filter(p => intersection(p.tags, tags).length > 0)
 	return fakeRequest(similar);
 };
 

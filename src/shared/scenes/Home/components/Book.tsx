@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Segment, Label, Button } from 'semantic-ui-react'
 //import { StoreState } from '../../types/';
 import { connect, Dispatch } from 'react-redux';
+import BOOK from '../../../types/book';
 
 
 
@@ -29,13 +30,21 @@ class BookDetails extends React.Component<any,any,any>{
 					<img src={image} alt={name} className='cover' />
 					<h1>ID: {id} - {title}</h1>
 					<h2>By {author}</h2>
-					{ tags && tags.map((tag :any) => <Label key={tag} color='yellow'>{tag}</Label>) }
+					{ tags && tags.map((tag : string) => <Label key={tag} color='yellow'>{tag}</Label>) }
 			<Button content='Buy' icon='shop' onClick={this.handleAddToCart} />
 			<div className='similar'> 
 				<h3>You might also like:</h3>
-				{ similarBooks && similarBooks.map( (similar :any) => (
-					<img key={similar.id} src={similar.image} alt={similar.name} className='similar_cover' />
-					)) }
+				{ similarBooks && similarBooks.map( (similar : BOOK) => (
+					<div key={similar.id} >
+						{similar.author}
+						{similar.title}
+					<ul> 
+						{similar.tags.map( (tag : string, id : number) => (
+							<li key={id} > {tag} </li>
+							))}
+					</ul>
+				</div>
+				)) }
 			</div>
 
 		</Segment>

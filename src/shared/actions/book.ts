@@ -48,8 +48,7 @@ export const requestBooksByTags = (id : number, tags : Array<string>) => (
 
 export const requestBookAndSimilars = (id : number) => (
 	(dispatch : Dispatch<any>,getState : any) => {
-		dispatch(requestBook(id))
-		const {books} = getState(); 
-		dispatch(requestBooksByTags(id, books.selectedBook.tags));
+		const bookPromise : any = dispatch(requestBook(id));
+		bookPromise.then( (book : BOOK) => dispatch(requestBooksByTags(id, book.tags)));
 	}
 )
