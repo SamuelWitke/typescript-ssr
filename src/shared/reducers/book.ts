@@ -1,8 +1,8 @@
 import { BOOK_SUCCESS } from '../constants/book';
 import { SIMILAR_SUCCESS } from '../constants/request';
-import { StoreState } from '../types/'
+//import { StoreState } from '../types/'
 
-export default (state: StoreState, action : any) : any=> {
+export default (state: any = { selectedBook: {}, similar: [] }, action : any) : any=> {
 	switch (action.type) {
 		case BOOK_SUCCESS:
 			return { selectedBook: action.payload, similar: [] };

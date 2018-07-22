@@ -49,7 +49,7 @@ export const requestBooksByTags = (id : number, tags : Array<string>) => (
 export const requestBookAndSimilars = (id : number) => (
 	(dispatch : Dispatch<any>,getState : any) => {
 		dispatch(requestBook(id))
-		const {book} = getState(); 
-		dispatch(requestBooksByTags(id, book.tags));
+		const {books} = getState(); 
+		dispatch(requestBooksByTags(id, books.selectedBook.tags));
 	}
 )
