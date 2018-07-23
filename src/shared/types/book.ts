@@ -3,6 +3,6 @@ export default interface BOOK {
 		series: string,
 		title: string,
 		author: string,
-		img: string,
+		image: string,
 		tags: Array<string>
 }

@@ -9,29 +9,38 @@ import user from './reducers/user';
 import cart from './reducers/cart';
 import example from './reducers/example';
 import { combineReducers } from 'redux';
+import createHistory from "history/createBrowserHistory";
+import {
+	routerReducer,
+	routerMiddleware,
+} from "react-router-redux";
+
+export const history = createHistory();
 
 
-
-function configureStore(){
+export function configureStore(){
 	const store: Store<any,EnthusiasmAction> = 
-	applyMiddleware(thunk.withExtraArgument(api) as ThunkMiddleware<any, EnthusiasmAction, string> , logger)(createStore)
+		applyMiddleware(
+			thunk.withExtraArgument(api) as ThunkMiddleware<any, EnthusiasmAction, string> , 
+			logger, 
+			routerMiddleware(history))(createStore)
 	(combineReducers({
-	books,
-	user,
-	cart,
-	example})
-	, <any> {
-		example : {
-			enthusiasmLevel: 1,
-			languageName: 'TypeScript',
-		},
-		books: <any>{
-			selectedBook : <any>{},
-			similar : <any>[],
-		},		
-	} ,
+		router: routerReducer,
+		books,
+		user,
+		cart,
+		example})
+		, <any> {
+			example : {
+				enthusiasmLevel: 1,
+				languageName: 'TypeScript',
+			},
+			books: <any>{
+				selectedBook : <any>{},
+				similar : <any>[],
+			},		
+		} ,
 	);
 	return store;
 }
 
-export default configureStore;

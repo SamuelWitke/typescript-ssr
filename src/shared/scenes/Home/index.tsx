@@ -3,6 +3,10 @@ import { Dropdown, Segment } from 'semantic-ui-react'
 import Book from './components/Book';
 //import './Home.css';
 
+export type PassedProps = {
+	selectedId : number
+}
+
 type State = {
 	selectedId: number | null,
 }
@@ -15,12 +19,21 @@ class Home extends React.Component<any,State> {
 		};
 	}
 
+	onReset = () => {
+		this.setState({
+			selectedId: null 
+		});
+	}
+
+	onSelectedChange = (value : any) => {
+		this.setState({selectedId: value} as State, () => console.log("onSelectedChange",this.state)) 
+	}
+
 	render() {
-		console.log(this.state);	
 		return (
 			<div>
 				{ this.state.selectedId !== null ?
-				<Book id={this.state.selectedId} />
+				<Book selectedId={this.state.selectedId} onReset={this.onReset} />
 				: 
 					<Segment>
 						<Dropdown
@@ -34,8 +47,7 @@ class Home extends React.Component<any,State> {
 								{ text: 'Neuromancer', value: 6 },
 								{ text: 'Ready Player One', value: 7 },
 							]}
-							onChange={(e, selected) => this.setState({selectedId: selected.value} as State)}
-
+							onChange={(e, selected) => this.onSelectedChange(selected.value)}
 							fluid
 							search
 							selection

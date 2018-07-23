@@ -5,7 +5,7 @@ import App from '../shared/App';
 import html from './html';
 import { Provider } from "react-redux";
 import * as React from "react";
-import configureStore from "../shared/configureStore";
+import {configureStore} from "../shared/configureStore";
 import * as path from 'path';
 
 const app: express.Application = express();

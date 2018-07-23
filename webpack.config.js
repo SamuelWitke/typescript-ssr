@@ -9,9 +9,14 @@ const config = {
 	/* This information is used to give the name of the bundled file and the 
 										location of the bundled file. */
 	output: {
-		path: path.resolve(__dirname, "build/"),
-		publicPath: "/build/",
+		path: path.resolve(__dirname, "public"),
+		publicPath: 'http://localhost:8080',
 		filename: "bundle.js"
+	},
+
+	devServer: {
+		publicPath: "/",
+		contentBase: "./public",
 	},
 
 	/*  The extensions which will be imported or required in the application
