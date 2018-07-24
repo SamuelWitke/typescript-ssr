@@ -37,6 +37,7 @@ const books = [
 	},
 	{
 		id: 5,
+		series: '',
 		title: 'Murder on the Orient Express',
 		author: 'Agatha Cristie',
 		image: `https://images-na.ssl-images-amazon.com/images/I/51JVXAbb2pL._SX302_BO1,204,203,200_.jpg`,
@@ -44,6 +45,7 @@ const books = [
 	},
 	{
 		id: 6,
+		series: '',
 		title: 'Neuromancer',
 		author: 'William Gibson',
 		image: `https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Neuromancer_%28Book%29.jpg/220px-Neuromancer_%28Book%29.jpg`,
@@ -51,12 +53,17 @@ const books = [
 	},
 	{
 		id: 7,
+		series: '',
 		title: 'Ready Player One',
 		author: 'Ernest Cline',
 		image: `https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Ready_Player_One_cover.jpg/220px-Ready_Player_One_cover.jpg`,
 		tags: ['science fiction', 'matrix', 'insert coin']
 	},
 ];
+
+const fetchBooks = () => {
+	return fakeRequest(books);
+}
 
 const fetchBook = (id : number) => {
 	const book = books.find((book) => book.id === id );
@@ -86,4 +93,4 @@ function fakeRequest(data : any) {
 };
 
 
-export default { fetchBook, fetchBooksByTags, getUser, addToCart };
+export default {fetchBooks ,fetchBook, fetchBooksByTags, getUser, addToCart };

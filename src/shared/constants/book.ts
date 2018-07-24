@@ -1,3 +1,5 @@
 export const BOOK_REQUESTING = 'BOOK_REQUESTING';
 export const BOOK_SUCCESS = 'BOOK_SUCCESS';
 export const BOOK_FAILURE = 'BOOK_FAILURE';
+export const BOOKS_SUCCESS = 'BOOKS_SUCCESS';
+export const BOOK_REMOVE = 'BOOK_REMOVE';
