@@ -59,6 +59,14 @@ const books = [
 		image: `https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Ready_Player_One_cover.jpg/220px-Ready_Player_One_cover.jpg`,
 		tags: ['science fiction', 'matrix', 'insert coin']
 	},
+	{
+		id: 8,
+		series: '',
+		title: 'Fahrenheit 451',
+		author: 'Ray Bradbury',
+		image: `https://images-na.ssl-images-amazon.com/images/I/51OHrXAh0EL._SX303_BO1,204,203,200_.jpg`,
+		tags: ['science fiction', 'dystopian', 'fire']
+	},
 ];
 
 const fetchBooks = () => {
