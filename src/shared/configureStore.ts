@@ -10,6 +10,7 @@ import cart from './reducers/cart';
 import example from './reducers/example';
 import { combineReducers } from 'redux';
 import createHistory from "history/createBrowserHistory";
+import { reducer as formReducer } from 'redux-form'
 import {
 	routerReducer,
 	routerMiddleware,
@@ -19,15 +20,16 @@ export const history = createHistory();
 
 
 export function configureStore(){
-	const store: Store<any,EnthusiasmAction> = 
+	const store: Store<any,EnthusiasmAction> =
 		applyMiddleware(
-			thunk.withExtraArgument(api) as ThunkMiddleware<any, EnthusiasmAction, string> , 
-			logger, 
+			thunk.withExtraArgument(api) as ThunkMiddleware<any, EnthusiasmAction, string> ,
+			logger,
 			routerMiddleware(history))(createStore)
 	(combineReducers({
 		router: routerReducer,
 		books,
 		user,
+		form: formReducer,
 		cart,
 		example})
 		, <any> {
@@ -38,9 +40,8 @@ export function configureStore(){
 			books: <any>{
 				selectedBook : <any>{},
 				similar : <any>[],
-			},		
+			},
 		} ,
 	);
 	return store;
 }
-
