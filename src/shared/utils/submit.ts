@@ -19,26 +19,30 @@ export function signInValidate(values: any) {
 export function signUpValidateAync(values: any) {
 	return sleep(Math.random() * 1000) // simulate server latency
 		.then(() => {
-
+			const errors = {
+				_error: "Login Failed"
+			} as any;
 			if (!values.firstName) {
-				throw new SubmissionError({ firstName: 'Required', _error: 'Login failed!' })
+				errors.firstName = "Required"
 			}
 			if (!values.lastName) {
-				throw new SubmissionError({ lastName: 'Required', _error: 'Login failed!' })
+				errors.lastName = "Required"
 			}
 			if (!values.username) {
-				throw new SubmissionError({ username: 'Required', _error: 'Login failed!' })
+				errors.username = 'Required'
 			}
-			if (['john', 'paul', 'george', 'ringo'].includes(values.username)) {
-				throw new SubmissionError({ username: 'Username is taken', _error: 'Login failed!' })
-			} else if (values.username.length > 15) {
-				throw new SubmissionError({ username: 'Must be 15 characters or less', _error: 'Login failed!' })
+			else if (values.username.length > 15) {
+				errors.username = 'Must be 15 characters or less'
+			}
+			else if (['john', 'paul', 'george', 'ringo'].includes(values.username)) {
+				errors.username = 'User Name Taken'
 			}
 			if (!values.email) {
-				throw new SubmissionError({ email: 'Required', _error: 'Login failed!' })
+				errors.email = 'Required'
 			} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-				throw new SubmissionError({ email: 'Invalid email address', _error: 'Login failed!' })
+				errors.email = 'Invalid email address'
 			}
+			throw new SubmissionError(errors)
 		})
 }
 
