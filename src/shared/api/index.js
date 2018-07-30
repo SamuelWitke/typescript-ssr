@@ -8,7 +8,7 @@ var books = [
         series: 'Harry Potter',
         title: 'Harry Potter and the Philosopher\'s Stone',
         author: 'J. K. Rowling',
-        image: process.env.PUBLIC_URL + "/books/harrypotter.jpg",
+        image: "https://m.media-amazon.com/images/I/61v6w7YbLJL._SL500_.jpg",
         tags: ['fantasy', 'magic', 'puberty']
     },
     {
@@ -16,7 +16,7 @@ var books = [
         series: 'Lord of the Rings',
         title: 'The fellowship of the Ring',
         author: 'J. R. R. Tolkien',
-        image: process.env.PUBLIC_URL + "/books/lotr.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/The_Fellowship_of_the_Ring_cover.gif/220px-The_Fellowship_of_the_Ring_cover.gif",
         tags: ['fantasy', 'magic', 'jewelry']
     },
     {
@@ -24,7 +24,7 @@ var books = [
         series: 'Game of Thrones',
         title: 'A Song of Ice and Fire',
         author: 'George R. R. Martin',
-        image: process.env.PUBLIC_URL + "/books/gameofthrones.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/A_Song_of_Ice_and_Fire_book_collection_box_set_cover.jpg/220px-A_Song_of_Ice_and_Fire_book_collection_box_set_cover.jpg",
         tags: ['fantasy', 'killing everyone you will care about']
     },
     {
@@ -32,33 +32,47 @@ var books = [
         series: 'Sherlock Holmes',
         title: 'The adventures of Sherlock Holmes',
         author: 'Arthur Conan Doyle',
-        image: process.env.PUBLIC_URL + "/books/sherlockholmes.jpg",
+        image: "https://images.gr-assets.com/books/1328739610l/10047597.jpg",
         tags: ['detective', 'crime', 'drug abuse']
     },
     {
         id: 5,
+        series: '',
         title: 'Murder on the Orient Express',
         author: 'Agatha Cristie',
-        image: process.env.PUBLIC_URL + "/books/murderorient.jpg",
+        image: "https://images-na.ssl-images-amazon.com/images/I/51JVXAbb2pL._SX302_BO1,204,203,200_.jpg",
         tags: ['detective', 'crime', 'tourism']
     },
     {
         id: 6,
+        series: '',
         title: 'Neuromancer',
         author: 'William Gibson',
-        image: process.env.PUBLIC_URL + "/books/neuromancer.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Neuromancer_%28Book%29.jpg/220px-Neuromancer_%28Book%29.jpg",
         tags: ['science fiction', 'matrix', 'cowboys']
     },
     {
         id: 7,
+        series: '',
         title: 'Ready Player One',
         author: 'Ernest Cline',
-        image: process.env.PUBLIC_URL + "/books/readyp1.jpg",
+        image: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Ready_Player_One_cover.jpg/220px-Ready_Player_One_cover.jpg",
         tags: ['science fiction', 'matrix', 'insert coin']
     },
+    {
+        id: 8,
+        series: '',
+        title: 'Fahrenheit 451',
+        author: 'Ray Bradbury',
+        image: "https://images-na.ssl-images-amazon.com/images/I/51OHrXAh0EL._SX303_BO1,204,203,200_.jpg",
+        tags: ['science fiction', 'dystopian', 'fire']
+    },
 ];
+var fetchBooks = function () {
+    return fakeRequest(books);
+};
 var fetchBook = function (id) {
-    var book = books.filter(function (book) { return book.id === id; });
+    var book = books.find(function (book) { return book.id === id; });
     return fakeRequest(book);
 };
 var fetchBooksByTags = function (tags) {
@@ -80,4 +94,4 @@ function fakeRequest(data) {
     });
 }
 ;
-exports["default"] = { fetchBook: fetchBook, fetchBooksByTags: fetchBooksByTags, getUser: getUser, addToCart: addToCart };
+exports["default"] = { fetchBooks: fetchBooks, fetchBook: fetchBook, fetchBooksByTags: fetchBooksByTags, getUser: getUser, addToCart: addToCart };

@@ -2,20 +2,24 @@
 exports.__esModule = true;
 var express = require("express");
 var server_1 = require("react-dom/server");
-var App_1 = require("../shared/App");
+//import { StaticRouter, } from "react-router-dom"
 var html_1 = require("./html");
 var react_redux_1 = require("react-redux");
 var React = require("react");
 var configureStore_1 = require("../shared/configureStore");
 var path = require("path");
+var App_1 = require("../shared/App");
+var react_router_dom_1 = require("react-router-dom");
 var app = express();
 var PORT = 8000;
-app.use(express.static(path.join(__dirname + '/../../build/'))); //serves the index.html
+app.use(express.static(path.join(__dirname + '/build/'))); //serves the index.html
 app.get("**", function (req, res) {
-    var store = configureStore_1["default"]();
+    var context = {};
+    var store = configureStore_1.configureStore();
     var initialData = store.getState();
     var body = server_1.renderToString(React.createElement(react_redux_1.Provider, { store: store },
-        React.createElement(App_1["default"], null)));
+        React.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
+            React.createElement(App_1["default"], null))));
     res.send(html_1["default"]({
         body: body,
         initialData: initialData

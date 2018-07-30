@@ -1,6 +1,10 @@
 
 export interface StoreState {
-	languageName: string;
-	enthusiasmLevel: number;
-	book:  any,
+	books: any,
+	cart: Array<number>,
+	example: any
+	form: any,
+	router: any,
+	user: any,
+
 }

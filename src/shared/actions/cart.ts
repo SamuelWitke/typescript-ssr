@@ -1,14 +1,14 @@
 import { ADDED_TO_CART } from '../constants/cart';
 import { Dispatch } from "redux";
 
-const added = (id : number) => ({ type: ADDED_TO_CART, payload: id });
+const added = (cart: number) => ({ type: ADDED_TO_CART, payload: cart });
 
-export const addToCart = (bookId : number) => (
-	(dispatch : Dispatch , getState : any, api : any) => {
-		console.log(bookId);
-		const user = getState().user;
-		if(user){
-			api.addToCart(bookId)
+export const addToCart = (bookId: number) => (
+	(dispatch: Dispatch, getState: any, api: any) => {
+		const state = getState();
+		const { user } = state;
+		if (user) {
+			api.addToCart()
 				.then(dispatch(added(bookId)));
 		}
 	}

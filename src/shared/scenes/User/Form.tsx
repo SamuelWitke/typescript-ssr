@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-
+import { loadUser } from '../../actions/user';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 //import { WrappedFieldProps} from 'redux-form';
 import { push } from 'react-router-redux';
@@ -69,11 +69,19 @@ class ContactForm extends React.Component<any & any, any> {
   handleSubmit = () => {
     setTimeout(() => {
       console.log(this.props)
+      const { username, lastName, firstName, email } = this.props;
+      const user: any = {
+        lastName,
+        firstName,
+        username,
+        email,
+      }
+      this.props.loadUser(user)
       this.props.push('/')
     }, Math.random() * 1000)
   }
   render() {
-    const { error, submitSucceeded, handleSubmit, pristine, reset, submitting } = this.props
+    const { error, submitSucceeded, handleSubmit, pristine, reset, submitting, } = this.props
     return (
       <Form error={error != null} success={submitSucceeded} loading={submitting} className="form-horizontal" onSubmit={handleSubmit(this.handleSubmit)}>
         {error &&
@@ -102,18 +110,19 @@ class ContactForm extends React.Component<any & any, any> {
 const selector = formValueSelector('signup')
 
 function mapStateToProps(state: any) {
-  const hasEmailValue = selector(state, 'email')
-  const { firstName, lastName } = selector(state, 'firstName', 'lastName')
-  console.log(hasEmailValue, firstName, lastName)
+  const { firstName, lastName, username, email } = selector(state, 'firstName', 'lastName', 'email', "username")
   return {
-    hasEmailValue,
-    fullName: `${firstName || ''} ${lastName || ''}`
+    email,
+    firstName,
+    lastName,
+    username,
   }
 }
 
 function mapDispatchToProps(dispatch: Dispatch<any>) {
   return {
     push: (loc: string) => dispatch(push(loc)),
+    loadUser: (user: any) => dispatch(loadUser(user)),
   };
 }
 
@@ -122,5 +131,5 @@ const FormRedux: any = connect<any, any, any>(mapStateToProps, mapDispatchToProp
 export default reduxForm({
   form: 'signup',  // a unique identifier for this form,
   validate: sigunUpValidate, // Not Async Validation,
-  asyncValidate: signUpValidateAync
+  asyncValidate: signUpValidateAync as any,
 })(FormRedux as any);

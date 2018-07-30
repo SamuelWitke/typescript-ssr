@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, Store} from 'redux';
+import { applyMiddleware, createStore, Store } from 'redux';
 import { EnthusiasmAction } from './actions/example';
 //import { StoreState } from './types/';
 import logger from 'redux-logger/'
@@ -9,39 +9,54 @@ import user from './reducers/user';
 import cart from './reducers/cart';
 import example from './reducers/example';
 import { combineReducers } from 'redux';
-import createHistory from "history/createBrowserHistory";
+import createBrowserHistory from 'history/createBrowserHistory';
+import createMemoryHistory from 'history/createMemoryHistory';
+
 import { reducer as formReducer } from 'redux-form'
 import {
 	routerReducer,
 	routerMiddleware,
 } from "react-router-redux";
 
-export const history = createHistory();
+export let history: any;
+if (typeof window === 'undefined') {
+	// since the server has no HTML5 push states,
+	// history must be temporarily created in memory
+	history = createMemoryHistory();
+}
+else {
+	// on the client, we can go ahead and make a standard
+	// `history` state
+	history = createBrowserHistory();
+}
+
+export function configureStore() {
 
 
-export function configureStore(){
-	const store: Store<any,EnthusiasmAction> =
+	const store: Store<any, EnthusiasmAction> =
 		applyMiddleware(
-			thunk.withExtraArgument(api) as ThunkMiddleware<any, EnthusiasmAction, string> ,
+			thunk.withExtraArgument(api) as ThunkMiddleware<any, EnthusiasmAction, string>,
 			logger,
 			routerMiddleware(history))(createStore)
-	(combineReducers({
-		router: routerReducer,
-		books,
-		user,
-		form: formReducer,
-		cart,
-		example})
-		, <any> {
-			example : {
-				enthusiasmLevel: 1,
-				languageName: 'TypeScript',
+			(combineReducers({
+				router: routerReducer,
+				books,
+				user,
+				form: formReducer,
+				cart,
+				example
+			})
+			, <any>{
+				example: {
+					enthusiasmLevel: 1,
+					languageName: 'TypeScript',
+				},
+				books: <any>{
+					selectedBook: <any>{},
+					similar: <any>[],
+				},
+				cart: [],
 			},
-			books: <any>{
-				selectedBook : <any>{},
-				similar : <any>[],
-			},
-		} ,
-	);
+		);
 	return store;
 }

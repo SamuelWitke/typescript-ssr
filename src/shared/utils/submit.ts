@@ -1,20 +1,6 @@
-import { SubmissionError } from 'redux-form'
+import { Promise } from 'es6-promise'
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 //const userNameAPI = (ms: number) => new Promise(resolve => setTimeout(resolve(['john', 'paul', 'george', 'ringo']), ms))
-
-export function signInValidate(values: any) {
-	return sleep(Math.random() * 1000) // simulate server latency
-		.then(() => {
-			if (!['john', 'paul', 'george', 'ringo'].includes(values.username)) {
-				throw new SubmissionError({ username: 'User does not exist', _error: 'Login failed!' })
-			} else if (values.password !== 'redux-form') {
-				throw new SubmissionError({ password: 'Wrong password', _error: 'Login failed!' })
-			} else {
-				window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
-			}
-		})
-}
 
 export function signUpValidateAync(values: any) {
 	return new Promise((resolve, reject) => {
@@ -31,8 +17,7 @@ export function signUpValidateAync(values: any) {
 			else {
 				resolve();
 			}
-		})
-			, Math.random() * 10000
+		}, Math.random() * 1000)
 	})
 }
 
