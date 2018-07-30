@@ -13,11 +13,12 @@ import { StaticRouter } from "react-router-dom"
 const app: express.Application = express();
 const PORT: number = 8000;
 
-app.use(express.static(path.join(__dirname + '/build/')))//serves the index.html
+app.use(express.static(path.join(__dirname + '../../../public/')))//serves the index.html
 app.get("**", (req: Request, res: Response): void => {
   const context = {};
   const store = configureStore();
   const initialData = store.getState();
+  const bundlePath = path.join(__dirname + '../../build/bundle.js');
   const body = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
@@ -28,9 +29,11 @@ app.get("**", (req: Request, res: Response): void => {
   res.send(
     html({
       body,
-      initialData
+      initialData,
+      bundlePath
     })
   );
+  //res.sendFile(path.join(__dirname + '../../../public/index.html'));
 });
 
 app.listen(PORT, () => {

@@ -39,12 +39,11 @@ var Home = /** @class */ (function (_super) {
         return _this;
     }
     Home.prototype.componentWillReceiveProps = function (nextProps) {
-        var _this = this;
         if (nextProps.allBooks !== this.props.allBooks) {
             var allBooks = nextProps.allBooks;
             if (allBooks) {
                 var text = allBooks.map(function (book) { return { text: book.title, value: book.id }; });
-                this.setState({ text: text }, function () { return console.log("onSelectedChange", _this.state); });
+                this.setState({ text: text });
             }
         }
     };

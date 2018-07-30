@@ -43,7 +43,7 @@ class Home extends React.Component<any,State> {
 			const { allBooks } = nextProps;
 			if(allBooks){
 				const text = allBooks.map( (book : BOOK) => {return {text: book.title, value: book.id} });
-				this.setState({text} as State, () => console.log("onSelectedChange",this.state))
+				this.setState({text} as State)
 			}
 		}
 	}

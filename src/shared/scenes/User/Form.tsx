@@ -68,7 +68,6 @@ const renderInput = (
 class ContactForm extends React.Component<any & any, any> {
   handleSubmit = () => {
     setTimeout(() => {
-      console.log(this.props)
       const { username, lastName, firstName, email } = this.props;
       const user: any = {
         lastName,

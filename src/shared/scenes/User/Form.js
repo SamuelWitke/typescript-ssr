@@ -72,7 +72,6 @@ var ContactForm = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleSubmit = function () {
             setTimeout(function () {
-                console.log(_this.props);
                 var _a = _this.props, username = _a.username, lastName = _a.lastName, firstName = _a.firstName, email = _a.email;
                 var user = {
                     lastName: lastName,
