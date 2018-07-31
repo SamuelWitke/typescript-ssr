@@ -10,7 +10,7 @@
     "build:dev": "tsc && webpack --progress",
     "build:server": "tsc --lib dom,es2016 --jsx react src/server/index.tsx ",
     "start": "node ./src/server/index.js",
-    "clean": "rd /s/q built",
+    "clean": "rd /s/q built"
   },
   "author": "Samuel Witke",
   "dependencies": {
