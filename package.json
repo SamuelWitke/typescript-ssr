@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --exclude 'src/tests/*.{ts,tsx}'",
-    "start": "webpack-dev-server",
+    "start:dev": "webpack-dev-server",
+		"heroku-postbuild”: “webpack -p",
     "test": "jest",
-    "build": "tsc && webpack --progress",
+    "build:dev": "tsc && webpack --progress",
     "build:server": "tsc --lib dom,es2016 --jsx react src/server/index.tsx ",
-    "start:server": "node ./src/server/index.js",
+    "start": "node ./src/server/index.js",
     "clean": "rd /s/q built",
     "prepare": "tsc && webpack --progress --config webpack.prod.config.js"
   },
