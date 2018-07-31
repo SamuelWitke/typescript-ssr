@@ -11,7 +11,6 @@
     "build:server": "tsc --lib dom,es2016 --jsx react src/server/index.tsx ",
     "start": "node ./src/server/index.js",
     "clean": "rd /s/q built",
-    "prepare": "tsc && webpack --progress --config webpack.prod.config.js"
   },
   "author": "Samuel Witke",
   "dependencies": {
