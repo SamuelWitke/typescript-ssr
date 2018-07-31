@@ -11,7 +11,7 @@ var path = require("path");
 var App_1 = require("../shared/App");
 var react_router_dom_1 = require("react-router-dom");
 var app = express();
-var PORT = 8000;
+var PORT = Number(process.env.PORT) || 8000;
 app.use(express.static(path.join(__dirname + '../../../public/'))); //serves the index.html
 app.get("**", function (req, res) {
     var context = {};
