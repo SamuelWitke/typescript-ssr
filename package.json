@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --exclude 'src/tests/*.{ts,tsx}'",
     "start:dev": "webpack-dev-server",
-		"heroku-postbuild”: “webpack -p",
     "test": "jest",
     "build:dev": "tsc && webpack --progress",
     "build:server": "tsc --lib dom,es2016 --jsx react src/server/index.tsx ",
