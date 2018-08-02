@@ -11,7 +11,7 @@ interface USER {
 }
 
 
-//const userLoading = (id : number) => ({ type: LOG_USER, payload: id });
+//const userLoading = (key : number) => ({ type: LOG_USER, payload: key });
 const userLoaded = (user: USER) => ({ type: LOGGED_USER, payload: user });
 const userLoadError = () => ({ type: USER_FAILURE });
 

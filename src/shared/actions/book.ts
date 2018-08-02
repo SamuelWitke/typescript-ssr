@@ -11,17 +11,17 @@ import BOOK from '../types/book'
 
 
 export const removeBook = ({ type: BOOK_REMOVE, payload: null });
-const entryLoading = (id: number) => ({ type: BOOK_REQUESTING, payload: id });
+const entryLoading = (key: number) => ({ type: BOOK_REQUESTING, payload: key });
 const entryLoaded = (book: BOOK) => ({ type: BOOK_SUCCESS, payload: book });
 const entryiesLoaded = (books: Array<BOOK>) => ({ type: BOOKS_SUCCESS, payload: books });
 const entryLoadError = () => ({ type: BOOK_FAILURE });
 
 
-export const requestBook = (id: number) => (
+export const requestBook = (key: number) => (
 	(dispatch: Dispatch<any>, getState: any, api: any): any => {
-		if (id == null) throw Error('id undefined');
-		dispatch(entryLoading(id));
-		return api.fetchBook(id)
+		if (key == null) throw Error('key undefined');
+		dispatch(entryLoading(key));
+		return api.fetchBook(key)
 			.then((book: BOOK) => {
 				if (book == null) throw Error('Book undefined');
 				dispatch(entryLoaded(book));
@@ -49,12 +49,12 @@ const similarEntriesLoading = (tags: Array<string>) => ({ type: SIMILAR_REQUESTI
 const similarEntriesLoaded = (books: BOOK) => ({ type: SIMILAR_SUCCESS, payload: books });
 const similarEntriesLoadError = () => ({ type: SIMILAR_FAILURE });
 
-export const requestBooksByTags = (id: number, tags: Array<string>) => (
+export const requestBooksByTags = (key: number, tags: Array<string>) => (
 	(dispatch: Dispatch<any>, getState: any, api: any) => {
 		dispatch(similarEntriesLoading(tags));
 		api.fetchBooksByTags(tags)
 			.then((books: any) => {
-				dispatch(similarEntriesLoaded(books.filter((p: BOOK) => p.id !== id)));
+				dispatch(similarEntriesLoaded(books.filter((p: BOOK) => p.key !== key)));
 			})
 			.catch((err: Error) => {
 				dispatch(similarEntriesLoadError());
@@ -63,9 +63,9 @@ export const requestBooksByTags = (id: number, tags: Array<string>) => (
 );
 
 
-export const requestBookAndSimilars = (id: number) => (
+export const requestBookAndSimilars = (key: number) => (
 	(dispatch: Dispatch<any>, getState: any) => {
-		const bookPromise: any = dispatch(requestBook(id));
-		bookPromise.then((book: BOOK) => dispatch(requestBooksByTags(id, book.tags)));
+		const bookPromise: any = dispatch(requestBook(key));
+		bookPromise.then((book: BOOK) => dispatch(requestBooksByTags(key, book.tags)));
 	}
 )

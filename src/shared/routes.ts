@@ -1,4 +1,4 @@
-import Home from './scenes/Home';
+import Store from './scenes/Store';
 import Book from './scenes/Book';
 import User from './scenes/User';
 
@@ -10,12 +10,12 @@ export interface Routes {
 
 const routes: Array<Object> = [
 	{
-		path: "/",
+		path: "/store",
 		exact: true,
-		component: Home
+		component: Store
 	},
 	{
-		path: '/book/:id',
+		path: '/book/:key',
 		exact: true,
 		component: Book
 	}, {

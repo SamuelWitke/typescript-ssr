@@ -35,22 +35,22 @@ var BookDetails = /** @class */ (function (_super) {
     function BookDetails(props) {
         var _this = _super.call(this, props) || this;
         _this.handleAddToCart = function () {
-            _this.props.addToCart(_this.props.id);
+            _this.props.addToCart(_this.props.key);
         };
-        var id = _this.props.match.params.id;
-        _this.props.requestBookAndSimilars(parseInt(id));
+        var key = _this.props.match.params.key;
+        _this.props.requestBookAndSimilars(parseInt(key));
         return _this;
     }
     BookDetails.prototype.componentWillReceiveProps = function (nextProps) {
-        var id = this.props.match.params.id;
-        var nextId = nextProps.match.params.id;
-        if (id !== nextId) {
+        var key = this.props.match.params.key;
+        var nextId = nextProps.match.params.key;
+        if (key !== nextId) {
             this.props.requestBookAndSimilars(parseInt(nextId));
         }
     };
     BookDetails.prototype.render = function () {
         var _this = this;
-        var _a = this.props, id = _a.id, series = _a.series, title = _a.title, author = _a.author, image = _a.image, tags = _a.tags, similarBooks = _a.similarBooks;
+        var _a = this.props, key = _a.key, series = _a.series, title = _a.title, author = _a.author, image = _a.image, tags = _a.tags, similarBooks = _a.similarBooks;
         return (React.createElement(semantic_ui_react_1.Segment.Group, null,
             React.createElement(semantic_ui_react_1.Segment, { size: 'big' },
                 " ",
@@ -61,7 +61,7 @@ var BookDetails = /** @class */ (function (_super) {
                     React.createElement(semantic_ui_react_3.Image, { centered: true, src: image, size: 'medium', rounded: true }),
                     React.createElement("h1", null,
                         "ID: ",
-                        id,
+                        key,
                         " - ",
                         title),
                     React.createElement("h2", null,
@@ -73,15 +73,15 @@ var BookDetails = /** @class */ (function (_super) {
                     React.createElement(semantic_ui_react_4.Grid, { columns: 3, divided: true },
                         React.createElement(semantic_ui_react_4.Grid.Row, null,
                             React.createElement("h3", null, "You might also like:")),
-                        React.createElement(semantic_ui_react_4.Grid.Row, null, similarBooks && similarBooks.map(function (similar) { return (React.createElement(semantic_ui_react_4.Grid.Column, { key: similar.id },
-                            React.createElement(semantic_ui_react_6.Card, { onClick: function () { return _this.props.push("/book/" + similar.id); } },
+                        React.createElement(semantic_ui_react_4.Grid.Row, null, similarBooks && similarBooks.map(function (similar) { return (React.createElement(semantic_ui_react_4.Grid.Column, { key: similar.key },
+                            React.createElement(semantic_ui_react_6.Card, { onClick: function () { return _this.props.push("/book/" + similar.key); } },
                                 React.createElement(semantic_ui_react_3.Image, { src: similar.image, size: 'medium', rounded: true }),
                                 React.createElement(semantic_ui_react_6.Card.Header, null, similar.title),
                                 React.createElement(semantic_ui_react_6.Card.Content, null,
                                     React.createElement(semantic_ui_react_6.Card.Meta, null,
                                         React.createElement("span", { className: 'date' }, similar.author)),
                                     React.createElement(semantic_ui_react_6.Card.Description, null, similar.series)),
-                                React.createElement(semantic_ui_react_2.List, null, similar.tags.map(function (tag, id) { return (React.createElement(semantic_ui_react_1.Label, { key: id, color: 'blue' }, tag)); }))))); })))))));
+                                React.createElement(semantic_ui_react_2.List, null, similar.tags.map(function (tag, key) { return (React.createElement(semantic_ui_react_1.Label, { key: key, color: 'blue' }, tag)); }))))); })))))));
     };
     return BookDetails;
 }(React.Component));
@@ -94,9 +94,9 @@ exports.mapStateToProps = mapStateToProps;
 function mapDispatchToProps(dispatch) {
     return {
         push: function (loc) { return dispatch(react_router_redux_1.push(loc)); },
-        requestBookAndSimilars: function (id) { return dispatch(book_1.requestBookAndSimilars(id)); },
+        requestBookAndSimilars: function (key) { return dispatch(book_1.requestBookAndSimilars(key)); },
         removeBook: function () { dispatch(react_router_redux_1.push('/')); dispatch(book_1.removeBook); },
-        addToCart: function (id) { return dispatch(cart_1.addToCart(id)); }
+        addToCart: function (key) { return dispatch(cart_1.addToCart(key)); }
     };
 }
 exports.mapDispatchToProps = mapDispatchToProps;

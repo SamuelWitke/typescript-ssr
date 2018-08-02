@@ -10,7 +10,7 @@ var routes = [
         component: Home_1["default"]
     },
     {
-        path: '/book/:id',
+        path: '/book/:key',
         exact: true,
         component: Book_1["default"]
     }, {

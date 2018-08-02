@@ -16,24 +16,24 @@ import { Card } from 'semantic-ui-react'
 class BookDetails extends React.Component<any, any, any>{
   constructor(props: any) {
     super(props);
-    const { id } = this.props.match.params;
-    this.props.requestBookAndSimilars(parseInt(id));
+    const { key } = this.props.match.params;
+    this.props.requestBookAndSimilars(parseInt(key));
   }
 
   componentWillReceiveProps(nextProps: any) {
-    const { id } = this.props.match.params;
-    const nextId = nextProps.match.params.id;
-    if (id !== nextId) {
+    const { key } = this.props.match.params;
+    const nextId = nextProps.match.params.key;
+    if (key !== nextId) {
       this.props.requestBookAndSimilars(parseInt(nextId));
     }
   }
 
   handleAddToCart = () => {
-    this.props.addToCart(this.props.id);
+    this.props.addToCart(this.props.key);
   }
 
   render() {
-    const { id, series, title, author, image, tags, similarBooks } = this.props;
+    const { key, series, title, author, image, tags, similarBooks } = this.props;
     return (
       <Segment.Group>
         <Segment size='big'> {series}
@@ -42,7 +42,7 @@ class BookDetails extends React.Component<any, any, any>{
           <Button content='Back' icon='arrow left' secondary onClick={() => this.props.removeBook()} />
           <Container textAlign='center'>
             <Image centered src={image} size='medium' rounded />
-            <h1>ID: {id} - {title}</h1>
+            <h1>ID: {key} - {title}</h1>
             <h2>By {author}</h2>
             {tags && tags.map((tag: string) => <Label key={tag} color='yellow'>{tag}</Label>)}
             <Button content='Buy' icon='shop' onClick={() => this.handleAddToCart()} />
@@ -54,8 +54,8 @@ class BookDetails extends React.Component<any, any, any>{
               </Grid.Row>
               <Grid.Row>
                 {similarBooks && similarBooks.map((similar: BOOK) => (
-                  <Grid.Column key={similar.id} >
-                    <Card onClick={() => this.props.push(`/book/${similar.id}`)} >
+                  <Grid.Column key={similar.key} >
+                    <Card onClick={() => this.props.push(`/book/${similar.key}`)} >
                       <Image src={similar.image} size='medium' rounded />
                       <Card.Header>{similar.title}</Card.Header>
                       <Card.Content>
@@ -65,8 +65,8 @@ class BookDetails extends React.Component<any, any, any>{
                         <Card.Description>{similar.series}</Card.Description>
                       </Card.Content>
                       <List>
-                        {similar.tags.map((tag: string, id: number) => (
-                          <Label key={id} color='blue'>{tag}</Label>
+                        {similar.tags.map((tag: string, key: number) => (
+                          <Label key={key} color='blue'>{tag}</Label>
                         ))}
                       </List>
                     </Card>
@@ -92,9 +92,9 @@ export function mapStateToProps({ books }: any) {
 export function mapDispatchToProps(dispatch: Dispatch<any>) {
   return {
     push: (loc: string) => dispatch(push(loc)),
-    requestBookAndSimilars: (id: number) => dispatch(requestBookAndSimilars(id)),
-    removeBook: () => { dispatch(push('/')); dispatch(removeBook); },
-    addToCart: (id: number) => dispatch(addToCart(id)),
+    requestBookAndSimilars: (key: number) => dispatch(requestBookAndSimilars(key)),
+    removeBook: () => { dispatch(push('/store')); dispatch(removeBook); },
+    addToCart: (key: number) => dispatch(addToCart(key)),
   };
 }
 export default connect<any, any, any>(mapStateToProps, mapDispatchToProps)(BookDetails);

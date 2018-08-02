@@ -11,7 +11,7 @@ import App from '../shared/App';
 import { StaticRouter } from "react-router-dom"
 
 const app: express.Application = express();
-const PORT: number = Number(process.env.PORT) || 8000;
+const PORT: number = Number() || 8000;
 
 app.use(express.static(path.join(__dirname + '../../../public/')))//serves the index.html
 app.get("**", (req: Request, res: Response): void => {

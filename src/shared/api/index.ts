@@ -1,10 +1,10 @@
-import {intersection} from 'lodash'
-import {Promise} from 'es6-promise'
+import { intersection } from 'lodash'
+import { Promise } from 'es6-promise'
 
 
 const books = [
 	{
-		id: 1,
+		key: 1,
 		series: 'Harry Potter',
 		title: 'Harry Potter and the Philosopher\'s Stone',
 		author: 'J. K. Rowling',
@@ -12,7 +12,7 @@ const books = [
 		tags: ['fantasy', 'magic', 'puberty']
 	},
 	{
-		id: 2,
+		key: 2,
 		series: 'Lord of the Rings',
 		title: 'The fellowship of the Ring',
 		author: 'J. R. R. Tolkien',
@@ -20,7 +20,7 @@ const books = [
 		tags: ['fantasy', 'magic', 'jewelry']
 	},
 	{
-		id: 3,
+		key: 3,
 		series: 'Game of Thrones',
 		title: 'A Song of Ice and Fire',
 		author: 'George R. R. Martin',
@@ -28,7 +28,7 @@ const books = [
 		tags: ['fantasy', 'killing everyone you will care about']
 	},
 	{
-		id: 4,
+		key: 4,
 		series: 'Sherlock Holmes',
 		title: 'The adventures of Sherlock Holmes',
 		author: 'Arthur Conan Doyle',
@@ -36,7 +36,7 @@ const books = [
 		tags: ['detective', 'crime', 'drug abuse']
 	},
 	{
-		id: 5,
+		key: 5,
 		series: '',
 		title: 'Murder on the Orient Express',
 		author: 'Agatha Cristie',
@@ -44,7 +44,7 @@ const books = [
 		tags: ['detective', 'crime', 'tourism']
 	},
 	{
-		id: 6,
+		key: 6,
 		series: '',
 		title: 'Neuromancer',
 		author: 'William Gibson',
@@ -52,7 +52,7 @@ const books = [
 		tags: ['science fiction', 'matrix', 'cowboys']
 	},
 	{
-		id: 7,
+		key: 7,
 		series: '',
 		title: 'Ready Player One',
 		author: 'Ernest Cline',
@@ -60,7 +60,7 @@ const books = [
 		tags: ['science fiction', 'matrix', 'insert coin']
 	},
 	{
-		id: 8,
+		key: 8,
 		series: '',
 		title: 'Fahrenheit 451',
 		author: 'Ray Bradbury',
@@ -73,32 +73,32 @@ const fetchBooks = () => {
 	return fakeRequest(books);
 }
 
-const fetchBook = (id : number) => {
-	const book = books.find((book) => book.id === id );
+const fetchBook = (key: number) => {
+	const book = books.find((book) => book.key === key);
 	return fakeRequest(book);
 };
 
-const fetchBooksByTags = (tags : Array<string>) => {
+const fetchBooksByTags = (tags: Array<string>) => {
 	const similar = books.filter(p => intersection(p.tags, tags).length > 0)
 	return fakeRequest(similar);
 };
 
 const getUser = () => {
-	return fakeRequest({id: 1, name: 'cassiozen', token: 'k536kh36kh456h4536'});
+	return fakeRequest({ key: 1, name: 'cassiozen', token: 'k536kh36kh456h4536' });
 };
 
-const addToCart = (data : any) => {
+const addToCart = (data: any) => {
 	return fakeRequest(data);
 };
 
 // Returns a promise for data that resolves after a random timeout (0 to 500 ms).
-function fakeRequest(data : any) {
+function fakeRequest(data: any) {
 	return new Promise(resolve => {
-		setTimeout(()=>{
+		setTimeout(() => {
 			resolve(data);
 		}, (Math.random() * 100));
 	})
 };
 
 
-export default {fetchBooks ,fetchBook, fetchBooksByTags, getUser, addToCart };
+export default { fetchBooks, fetchBook, fetchBooksByTags, getUser, addToCart };

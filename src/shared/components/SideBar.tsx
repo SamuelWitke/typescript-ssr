@@ -3,7 +3,11 @@ import { Button, Icon, Menu, Segment, Sidebar, Label } from 'semantic-ui-react'
 import { connect, Dispatch } from 'react-redux';
 import { push } from 'react-router-redux';
 
-class SidebarContainer extends React.Component<any, any> {
+type State = {
+  visible: boolean
+}
+
+class SidebarContainer extends React.Component<any, State> {
   state = { visible: true }
 
   handleButtonClick = () => this.setState({ visible: !this.state.visible })
@@ -28,7 +32,7 @@ class SidebarContainer extends React.Component<any, any> {
             visible={visible}
           >
             <Menu.Item as='a'
-              onClick={() => this.props.changeLocation('/')}
+              onClick={() => this.props.changeLocation('/store')}
             >
               <Icon name='home'
               />

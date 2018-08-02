@@ -4,7 +4,7 @@ var lodash_1 = require("lodash");
 var es6_promise_1 = require("es6-promise");
 var books = [
     {
-        id: 1,
+        key: 1,
         series: 'Harry Potter',
         title: 'Harry Potter and the Philosopher\'s Stone',
         author: 'J. K. Rowling',
@@ -12,7 +12,7 @@ var books = [
         tags: ['fantasy', 'magic', 'puberty']
     },
     {
-        id: 2,
+        key: 2,
         series: 'Lord of the Rings',
         title: 'The fellowship of the Ring',
         author: 'J. R. R. Tolkien',
@@ -20,7 +20,7 @@ var books = [
         tags: ['fantasy', 'magic', 'jewelry']
     },
     {
-        id: 3,
+        key: 3,
         series: 'Game of Thrones',
         title: 'A Song of Ice and Fire',
         author: 'George R. R. Martin',
@@ -28,7 +28,7 @@ var books = [
         tags: ['fantasy', 'killing everyone you will care about']
     },
     {
-        id: 4,
+        key: 4,
         series: 'Sherlock Holmes',
         title: 'The adventures of Sherlock Holmes',
         author: 'Arthur Conan Doyle',
@@ -36,7 +36,7 @@ var books = [
         tags: ['detective', 'crime', 'drug abuse']
     },
     {
-        id: 5,
+        key: 5,
         series: '',
         title: 'Murder on the Orient Express',
         author: 'Agatha Cristie',
@@ -44,7 +44,7 @@ var books = [
         tags: ['detective', 'crime', 'tourism']
     },
     {
-        id: 6,
+        key: 6,
         series: '',
         title: 'Neuromancer',
         author: 'William Gibson',
@@ -52,7 +52,7 @@ var books = [
         tags: ['science fiction', 'matrix', 'cowboys']
     },
     {
-        id: 7,
+        key: 7,
         series: '',
         title: 'Ready Player One',
         author: 'Ernest Cline',
@@ -60,7 +60,7 @@ var books = [
         tags: ['science fiction', 'matrix', 'insert coin']
     },
     {
-        id: 8,
+        key: 8,
         series: '',
         title: 'Fahrenheit 451',
         author: 'Ray Bradbury',
@@ -71,8 +71,8 @@ var books = [
 var fetchBooks = function () {
     return fakeRequest(books);
 };
-var fetchBook = function (id) {
-    var book = books.find(function (book) { return book.id === id; });
+var fetchBook = function (key) {
+    var book = books.find(function (book) { return book.key === key; });
     return fakeRequest(book);
 };
 var fetchBooksByTags = function (tags) {
@@ -80,7 +80,7 @@ var fetchBooksByTags = function (tags) {
     return fakeRequest(similar);
 };
 var getUser = function () {
-    return fakeRequest({ id: 1, name: 'cassiozen', token: 'k536kh36kh456h4536' });
+    return fakeRequest({ key: 1, name: 'cassiozen', token: 'k536kh36kh456h4536' });
 };
 var addToCart = function (data) {
     return fakeRequest(data);

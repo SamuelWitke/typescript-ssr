@@ -42,7 +42,7 @@ var Home = /** @class */ (function (_super) {
         if (nextProps.allBooks !== this.props.allBooks) {
             var allBooks = nextProps.allBooks;
             if (allBooks) {
-                var text = allBooks.map(function (book) { return { text: book.title, value: book.id }; });
+                var text = allBooks.map(function (book) { return { text: book.title, value: book.key }; });
                 this.setState({ text: text });
             }
         }
@@ -63,14 +63,14 @@ var Home = /** @class */ (function (_super) {
                 React.createElement(semantic_ui_react_1.Segment, null,
                     React.createElement(semantic_ui_react_2.Grid, null,
                         React.createElement(semantic_ui_react_2.Grid.Row, { columns: 2 },
-                            React.createElement(semantic_ui_react_2.Grid.Column, null, COL1 && COL1.map(function (book) { return (React.createElement(semantic_ui_react_3.Card, { key: book.id, onClick: function () { return _this.onSelectedChange(book.id); } },
+                            React.createElement(semantic_ui_react_2.Grid.Column, null, COL1 && COL1.map(function (book) { return (React.createElement(semantic_ui_react_3.Card, { key: book.key, onClick: function () { return _this.onSelectedChange(book.key); } },
                                 React.createElement(semantic_ui_react_3.Image, { src: book.image }),
                                 React.createElement(semantic_ui_react_3.Card.Content, null,
                                     React.createElement(semantic_ui_react_3.Card.Header, null, book.title),
                                     React.createElement(semantic_ui_react_3.Card.Meta, null,
                                         React.createElement("span", { className: 'date' }, book.author)),
                                     React.createElement(semantic_ui_react_3.Card.Description, null, book.series)))); })),
-                            React.createElement(semantic_ui_react_2.Grid.Column, null, COL2 && COL2.map(function (book) { return (React.createElement(semantic_ui_react_3.Card, { key: book.id, onClick: function () { return _this.onSelectedChange(book.id); } },
+                            React.createElement(semantic_ui_react_2.Grid.Column, null, COL2 && COL2.map(function (book) { return (React.createElement(semantic_ui_react_3.Card, { key: book.key, onClick: function () { return _this.onSelectedChange(book.key); } },
                                 React.createElement(semantic_ui_react_3.Image, { src: book.image }),
                                 React.createElement(semantic_ui_react_3.Card.Content, null,
                                     React.createElement(semantic_ui_react_3.Card.Header, null, book.title),
@@ -94,7 +94,7 @@ function mapDispatchToProps(dispatch) {
     return {
         push: function (loc) { return dispatch(react_router_redux_1.push(loc)); },
         requestAllBooks: function () { return dispatch(book_2.requestAllBooks()); },
-        requestBookAndSimilars: function (id) { return dispatch(book_1.requestBookAndSimilars(id)); }
+        requestBookAndSimilars: function (key) { return dispatch(book_1.requestBookAndSimilars(key)); }
     };
 }
 exports.mapDispatchToProps = mapDispatchToProps;
