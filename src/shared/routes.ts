@@ -19,7 +19,7 @@ const routes: Array<Object> = [
 		exact: true,
 		component: Book
 	}, {
-		path: "/User",
+		path: "/sign-up",
 		exact: true,
 		component: User
 	}

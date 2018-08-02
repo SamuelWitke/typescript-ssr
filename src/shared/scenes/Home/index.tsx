@@ -10,7 +10,15 @@ import {
   Segment,
 } from 'semantic-ui-react'
 
-import ResponsiveContainer from "./Container";
+import MobileContainer from './Mobile';
+import DesktopContainer from "./Container";
+
+const ResponsiveContainer = ({ children }: { children: any }) => (
+  <div>
+    <DesktopContainer>{children}</DesktopContainer>
+    <MobileContainer>{children}</MobileContainer>
+  </div>
+)
 
 export default () => (
   <ResponsiveContainer>

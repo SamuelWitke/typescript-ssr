@@ -39,7 +39,7 @@ class SidebarContainer extends React.Component<any, State> {
               Home
 			</Menu.Item>
             <Menu.Item as='a'
-              onClick={() => this.props.changeLocation('/user')}
+              onClick={() => this.props.changeLocation('/sign-up')}
             >
               <Icon name='user'
               />

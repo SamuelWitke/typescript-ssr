@@ -61,13 +61,13 @@ class DesktopContainer extends React.Component<any, State> {
                   onClick={() => this.props.changeLocation('/store')}
                 >
                   Demo Store</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
                 <Menu.Item position='right'>
                   <Button as='a' inverted={!fixed}>
                     Log in
                   </Button>
-                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}
+                    onClick={() => this.props.changeLocation('/sign-up')}
+                  >
                     Sign Up
                   </Button>
                 </Menu.Item>
