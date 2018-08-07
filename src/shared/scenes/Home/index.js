@@ -1,9 +1,9 @@
 "use strict";
 exports.__esModule = true;
 var React = require("react");
-var semantic_ui_react_1 = require("semantic-ui-react");
 var Mobile_1 = require("./Mobile");
 var Container_1 = require("./Container");
+var index_1 = require("./Sections/index");
 var ResponsiveContainer = function (_a) {
     var children = _a.children;
     return (React.createElement("div", null,
@@ -11,59 +11,5 @@ var ResponsiveContainer = function (_a) {
         React.createElement(Mobile_1["default"], null, children)));
 };
 exports["default"] = (function () { return (React.createElement(ResponsiveContainer, null,
-    React.createElement(semantic_ui_react_1.Segment, { style: { padding: '8em 0em' }, vertical: true },
-        React.createElement(semantic_ui_react_1.Grid, { container: true, stackable: true, verticalAlign: 'middle' },
-            React.createElement(semantic_ui_react_1.Grid.Row, null,
-                React.createElement(semantic_ui_react_1.Grid.Column, { width: 8 },
-                    React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } }, "We Help Companies and Companions"),
-                    React.createElement("p", { style: { fontSize: '1.33em' } }, "We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs... through pure data analytics."),
-                    React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } }, "We Make Bananas That Can Dance"),
-                    React.createElement("p", { style: { fontSize: '1.33em' } }, "Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.")),
-                React.createElement(semantic_ui_react_1.Grid.Column, { floated: 'right', width: 6 },
-                    React.createElement(semantic_ui_react_1.Image, { bordered: true, rounded: true, size: 'large', src: '/images/wireframe/white-image.png' }))),
-            React.createElement(semantic_ui_react_1.Grid.Row, null,
-                React.createElement(semantic_ui_react_1.Grid.Column, { textAlign: 'center' },
-                    React.createElement(semantic_ui_react_1.Button, { size: 'huge' }, "Check Them Out"))))),
-    React.createElement(semantic_ui_react_1.Segment, { style: { padding: '0em' }, vertical: true },
-        React.createElement(semantic_ui_react_1.Grid, { celled: 'internally', columns: 'equal', stackable: true },
-            React.createElement(semantic_ui_react_1.Grid.Row, { textAlign: 'center' },
-                React.createElement(semantic_ui_react_1.Grid.Column, { style: { paddingBottom: '5em', paddingTop: '5em' } },
-                    React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } }, "\"What a Company\""),
-                    React.createElement("p", { style: { fontSize: '1.33em' } }, "That is what they all say about us")),
-                React.createElement(semantic_ui_react_1.Grid.Column, { style: { paddingBottom: '5em', paddingTop: '5em' } },
-                    React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } }, "\"I shouldn't have gone with their competitor.\""),
-                    React.createElement("p", { style: { fontSize: '1.33em' } },
-                        React.createElement(semantic_ui_react_1.Image, { avatar: true, src: '/images/avatar/large/nan.jpg' }),
-                        React.createElement("b", null, "Nan"),
-                        " Chief Fun Officer Acme Toys"))))),
-    React.createElement(semantic_ui_react_1.Segment, { style: { padding: '8em 0em' }, vertical: true },
-        React.createElement(semantic_ui_react_1.Container, { text: true },
-            React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } }, "Breaking The Grid, Grabs Your Attention"),
-            React.createElement("p", { style: { fontSize: '1.33em' } }, "Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention."),
-            React.createElement(semantic_ui_react_1.Button, { as: 'a', size: 'large' }, "Read More"),
-            React.createElement(semantic_ui_react_1.Divider, { as: 'h4', className: 'header', horizontal: true, style: { margin: '3em 0em', textTransform: 'uppercase' } },
-                React.createElement("a", { href: '#' }, "Case Studies")),
-            React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } }, "Did We Tell You About Our Bananas?"),
-            React.createElement("p", { style: { fontSize: '1.33em' } }, "Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but it's really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance."),
-            React.createElement(semantic_ui_react_1.Button, { as: 'a', size: 'large' }, "I'm Still Quite Interested"))),
-    React.createElement(semantic_ui_react_1.Segment, { inverted: true, vertical: true, style: { padding: '5em 0em' } },
-        React.createElement(semantic_ui_react_1.Container, null,
-            React.createElement(semantic_ui_react_1.Grid, { divided: true, inverted: true, stackable: true },
-                React.createElement(semantic_ui_react_1.Grid.Row, null,
-                    React.createElement(semantic_ui_react_1.Grid.Column, { width: 3 },
-                        React.createElement(semantic_ui_react_1.Header, { inverted: true, as: 'h4', content: 'About' }),
-                        React.createElement(semantic_ui_react_1.List, { link: true, inverted: true },
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "Sitemap"),
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "Contact Us"),
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "Religious Ceremonies"),
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "Gazebo Plans"))),
-                    React.createElement(semantic_ui_react_1.Grid.Column, { width: 3 },
-                        React.createElement(semantic_ui_react_1.Header, { inverted: true, as: 'h4', content: 'Services' }),
-                        React.createElement(semantic_ui_react_1.List, { link: true, inverted: true },
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "Banana Pre-Order"),
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "DNA FAQ"),
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "How To Access"),
-                            React.createElement(semantic_ui_react_1.List.Item, { as: 'a' }, "Favorite X-Men"))),
-                    React.createElement(semantic_ui_react_1.Grid.Column, { width: 7 },
-                        React.createElement(semantic_ui_react_1.Header, { as: 'h4', inverted: true }, "Footer Header"),
-                        React.createElement("p", null, "Extra space for a call to action inside the footer that could help re-engage users.")))))))); });
+    React.createElement("div", { id: "about" },
+        React.createElement(index_1["default"], null)))); });

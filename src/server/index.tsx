@@ -13,12 +13,16 @@ import { StaticRouter } from "react-router-dom"
 const app: express.Application = express();
 const PORT: number = Number() || 8000;
 
-app.use(express.static(path.join(__dirname + '../../../public/')))//serves the index.html
+//app.use(express.static(path.join(__dirname + './)))//serves the index.html
+app.use(express.static(path.join(__dirname, './assets/')));
+
 app.get("**", (req: Request, res: Response): void => {
+  console.log(req.url);
   const context = {};
   const store = configureStore();
   const initialData = store.getState();
-  const bundlePath = path.join(__dirname + '../../build/bundle.js');
+  const bundlePath = path.join('./bundle.js');
+  console.log(bundlePath)
   const body = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>

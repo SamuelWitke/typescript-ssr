@@ -29,7 +29,7 @@ var SidebarContainer = /** @class */ (function (_super) {
         var _a = this.props, user = _a.user, cart = _a.cart;
         return (React.createElement("div", { style: { height: '100vh', width: '100%', overflow: 'hidden', padding: '10px', marginLeft: 'auto', marginRight: "auto" } },
             React.createElement(semantic_ui_react_1.Button, { onClick: this.handleButtonClick }, "Navigation"),
-            React.createElement(semantic_ui_react_1.Button, { content: 'Home', icon: 'arrow left', secondary: true, onClick: function () { return _this.props.changeLocation('/'); } }),
+            React.createElement(semantic_ui_react_1.Button, { content: '', icon: 'arrow left', secondary: true, onClick: function () { return _this.props.changeLocation('/'); } }),
             React.createElement(semantic_ui_react_1.Sidebar.Pushable, { as: semantic_ui_react_1.Segment },
                 React.createElement(semantic_ui_react_1.Sidebar, { as: semantic_ui_react_1.Menu, animation: 'overlay', icon: 'labeled', inverted: true, onHide: this.handleSidebarHide, vertical: true, style: { width: '100%', margin: '10px', textAlign: 'center' }, visible: visible },
                     React.createElement(semantic_ui_react_1.Menu.Item, { as: 'a', onClick: function () { return _this.props.changeLocation('/store'); } },

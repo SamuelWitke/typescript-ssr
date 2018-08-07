@@ -12,12 +12,15 @@ var App_1 = require("../shared/App");
 var react_router_dom_1 = require("react-router-dom");
 var app = express();
 var PORT = Number() || 8000;
-app.use(express.static(path.join(__dirname + '../../../public/'))); //serves the index.html
+//app.use(express.static(path.join(__dirname + './)))//serves the index.html
+app.use(express.static(path.join(__dirname, './assets/')));
 app.get("**", function (req, res) {
+    console.log(req.url);
     var context = {};
     var store = configureStore_1.configureStore();
     var initialData = store.getState();
-    var bundlePath = path.join(__dirname + '../../build/bundle.js');
+    var bundlePath = path.join('./bundle.js');
+    console.log(bundlePath);
     var body = server_1.renderToString(React.createElement(react_redux_1.Provider, { store: store },
         React.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
             React.createElement(App_1["default"], null))));

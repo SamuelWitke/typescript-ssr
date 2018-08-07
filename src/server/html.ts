@@ -7,7 +7,7 @@ const html = ({ body, initialData, bundlePath }: { body: string, initialData: Ob
 		</head>
 		<body style="margin:0">
 		<div id="root">${body}</div>
-		<script src=${bundlePath} defer></script>
+		<script src="/assets/bundle.js"></script>
 		 <script>window.__initialData__ = ${serialize(initialData)}</script>
 		</body>
 		</html>
