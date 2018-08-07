@@ -33,7 +33,7 @@ export default () => (
           <Segment vertical>
             Strong engineering professional with a Bachelor's degree focused in Computer Science from Brooklyn College.
                 </Segment>
-          <h4> Development Experience in ...</h4>
+          <h4> Professional Development Experience in ...</h4>
           <Segment vertical>
             <Label color='red' horizontal>
               Php
@@ -50,6 +50,31 @@ export default () => (
             <Label color='yellow' horizontal>
               Express
               </Label>
+            <Label color='violet' horizontal>
+              VBA
+              </Label>
+            <Label color='olive' horizontal>
+              Python
+              </Label>
+          </Segment>
+          <br />
+          <h4> Personal Development Experience in ...</h4>
+          <Segment vertical>
+            <Label color='teal' horizontal>
+              Go
+              </Label>
+            <Label color='orange' horizontal>
+              ASP.NET
+              </Label>
+            <Label color='pink' horizontal>
+              Django
+              </Label>
+            <Label color='purple' horizontal>
+              Flask
+                </Label>
+            <Label color='grey' horizontal>
+              C / C++
+              </Label>
           </Segment>
           <br />
         </Grid.Column>
@@ -58,10 +83,19 @@ export default () => (
             <Icon name="chart line" />
             Highly Motivated Self-Driven
             </Header>
+
           <p style={{ fontSize: '1.33em' }}>
-            Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-            bioengineered.
+            Continually developing and perfecting runtimes and preformance stacks, from personal and professional projects to leetcode and hackerrank challenges.
               </p>
+          <p style={{ fontSize: '1.33em' }}>
+            This website is a Typescript Server Side React/Redux Application.
+            Inspect this website to view.
+
+          </p>
+          <p style={{ fontSize: '1.33em' }}>
+            Source code available
+            <a href="https://github.com/SamuelWitke/typescript-ssr"> here</a>
+          </p>
           <a href="https://www.linkedin.com/in/samuelwitke/">
             <Icon size="huge" name="linkedin square" />
           </a>
@@ -71,6 +105,7 @@ export default () => (
           <a href="https://docs.google.com/document/d/1Q7Ed1mpcnPyNY3sZK6LZyoUrv-YRULx255IWvTHOHow/edit">
             <Icon size="huge" name="file text" />
           </a>
+
         </Grid.Column>
       </Grid.Row>
     </Grid>

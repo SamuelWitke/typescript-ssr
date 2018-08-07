@@ -1,7 +1,6 @@
 import * as express from 'express';
 import { Request, Response, } from 'express'
 import { renderToString } from 'react-dom/server';
-//import { StaticRouter, } from "react-router-dom"
 import html from './html';
 import { Provider } from "react-redux";
 import * as React from "react";
@@ -17,12 +16,10 @@ const PORT: number = Number() || 8000;
 app.use(express.static(path.join(__dirname, './assets/')));
 
 app.get("**", (req: Request, res: Response): void => {
-  console.log(req.url);
   const context = {};
   const store = configureStore();
   const initialData = store.getState();
   const bundlePath = path.join('./bundle.js');
-  console.log(bundlePath)
   const body = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>

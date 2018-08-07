@@ -6,7 +6,7 @@ exports["default"] = (function () { return (React.createElement(semantic_ui_reac
     React.createElement(semantic_ui_react_1.Grid, { celled: 'internally', columns: 'equal', stackable: true },
         React.createElement(semantic_ui_react_1.Divider, { as: 'h4', className: 'header', horizontal: true, style: { margin: '3em 0em', textTransform: 'uppercase' } },
             React.createElement("a", { href: '#' }, "Education")),
-        React.createElement(semantic_ui_react_1.Grid.Row, { textAlign: 'center' },
+        React.createElement(semantic_ui_react_1.Grid.Row, { container: true, textAlign: 'center' },
             React.createElement(semantic_ui_react_1.Grid.Column, { style: { paddingBottom: '5em', paddingTop: '5em' } },
                 React.createElement(semantic_ui_react_1.Header, { as: 'h3', style: { fontSize: '2em' } },
                     React.createElement("a", { href: "http://www.brooklyn.cuny.edu/web/home.php" }, "City University of New York-Brooklyn College")),

@@ -11,7 +11,7 @@ export default () => (
       >
         <a href='#'>Education</a>
       </Divider>
-      <Grid.Row textAlign='center'>
+      <Grid.Row container textAlign='center'>
         <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
           <Header as='h3' style={{ fontSize: '2em' }}>
             <a href="http://www.brooklyn.cuny.edu/web/home.php">
