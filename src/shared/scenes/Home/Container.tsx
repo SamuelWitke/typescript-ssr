@@ -1,4 +1,3 @@
-
 import * as React from 'react'
 import {
   Button,
@@ -11,11 +10,19 @@ import {
 import { connect, Dispatch } from 'react-redux';
 import { push } from 'react-router-redux';
 import HomepageHeading from './HomeHeading';
+import { CSSProperties } from 'react';
 
 type State = {
   fixed: boolean | undefined
 }
 
+const imageURL = "https://raw.githubusercontent.com/SamuelWitke/website/master/src/components/Home/img/20170704_182759.jpg"
+
+const landingImage: CSSProperties = {
+  height: '100%',
+  backgroundImage: `url(${imageURL}) `,
+  backgroundSize: "cover ",
+};
 
 class DesktopContainer extends React.Component<any, State> {
 
@@ -41,9 +48,9 @@ class DesktopContainer extends React.Component<any, State> {
           onBottomPassedReverse={this.hideFixedMenu}
         >
           <Segment
+            style={{ minHeight: 700, padding: '1em 0em' }}
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em' }}
             vertical
           >
             <Menu
@@ -53,6 +60,7 @@ class DesktopContainer extends React.Component<any, State> {
               secondary={!fixed}
               size='large'
             >
+
               <Container>
                 <Menu.Item as='a' active>
                   Home
@@ -73,11 +81,20 @@ class DesktopContainer extends React.Component<any, State> {
                 </Menu.Item>
               </Container>
             </Menu>
-            <HomepageHeading mobile={false} />
+            <Segment
+              style={{ ...landingImage, minHeight: 900, padding: '1em 0em' }}
+              inverted
+              textAlign='center'
+              vertical
+            >
+              <div className="LandingImage"  >
+                <HomepageHeading mobile={false} />
+              </div>
+            </Segment>
           </Segment>
         </Visibility>
         {children}
-      </Responsive>
+      </Responsive >
     )
   }
 }

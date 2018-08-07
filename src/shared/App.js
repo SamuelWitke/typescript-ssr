@@ -29,16 +29,25 @@ var semantic_ui_react_1 = require("semantic-ui-react");
 var semantic_ui_react_2 = require("semantic-ui-react");
 var routes_1 = require("./routes");
 var react_router_dom_1 = require("react-router-dom");
-function App() {
-    return (React.createElement(semantic_ui_react_2.Grid, { celled: true },
-        React.createElement(semantic_ui_react_2.Grid.Row, null,
-            React.createElement(semantic_ui_react_2.Grid.Column, { width: 4, style: { overflow: 'hidden' } },
-                React.createElement(SideBar_1["default"], null)),
-            React.createElement(semantic_ui_react_2.Grid.Column, { width: 12 },
-                React.createElement(semantic_ui_react_1.Container, null,
-                    React.createElement(react_router_dom_1.Switch, null, routes_1["default"].map(function (_a) {
-                        var path = _a.path, exact = _a.exact, Component = _a.component, rest = __rest(_a, ["path", "exact", "component"]);
-                        return (React.createElement(react_router_dom_1.Route, { key: path, path: path, exact: exact, render: function (props) { return (React.createElement(Component, __assign({}, props, rest))); } }));
-                    })))))));
-}
-exports["default"] = App;
+var Home_1 = require("./scenes/Home");
+/*
+const Store = () => (
+        {routes.map(({ path, exact, component: Component, ...rest }: Routes) => (
+            <Route key={path} path={path} exact={exact} render={(props) => (
+              <Component {...props} {...rest} />
+            )} />
+          ))}
+        )
+*/
+exports["default"] = (function () { return (React.createElement(react_router_dom_1.Switch, null,
+    React.createElement(react_router_dom_1.Route, { path: "/", exact: true, render: Home_1["default"] }),
+    routes_1["default"].map(function (_a) {
+        var path = _a.path, exact = _a.exact, Component = _a.component, rest = __rest(_a, ["path", "exact", "component"]);
+        return (React.createElement(react_router_dom_1.Route, { key: path, path: path, exact: exact, render: function (props) { return (React.createElement(semantic_ui_react_2.Grid, { celled: true },
+                React.createElement(semantic_ui_react_2.Grid.Row, null,
+                    React.createElement(semantic_ui_react_2.Grid.Column, { width: 4, style: { overflow: 'hidden' } },
+                        React.createElement(SideBar_1["default"], null)),
+                    React.createElement(semantic_ui_react_2.Grid.Column, { width: 12 },
+                        React.createElement(semantic_ui_react_1.Container, null,
+                            React.createElement(Component, __assign({}, props, rest))))))); } }));
+    }))); });

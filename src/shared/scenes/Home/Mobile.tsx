@@ -11,10 +11,21 @@ import {
 import HomepageHeading from './HomeHeading';
 import { connect, Dispatch } from 'react-redux';
 import { push } from 'react-router-redux';
+import { CSSProperties } from 'react';
 
 type State = {
   sidebarOpened: boolean
 }
+
+
+const imageURL = "https://raw.githubusercontent.com/SamuelWitke/website/master/src/components/Home/img/20170704_182759.jpg"
+
+const landingImage: CSSProperties = {
+  height: '100%',
+  backgroundImage: `url(${imageURL}) `,
+  backgroundSize: "cover ",
+};
+
 
 class MobileContainer extends React.Component<any, State> {
   constructor(props: any) {
@@ -82,7 +93,14 @@ class MobileContainer extends React.Component<any, State> {
                   </Menu.Item>
                 </Menu>
               </Container>
-              <HomepageHeading mobile />
+              <Segment
+                inverted
+                textAlign='center'
+                style={{ ...landingImage, minHeight: 350, padding: '1em 0em' }}
+                vertical
+              >
+                <HomepageHeading mobile />
+              </Segment>
             </Segment>
             {children}
           </Sidebar.Pusher>

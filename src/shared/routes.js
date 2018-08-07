@@ -1,20 +1,20 @@
 "use strict";
 exports.__esModule = true;
-var Home_1 = require("./scenes/Home");
+var Store_1 = require("./scenes/Store");
 var Book_1 = require("./scenes/Book");
 var User_1 = require("./scenes/User");
 var routes = [
     {
-        path: "/",
+        path: "/store",
         exact: true,
-        component: Home_1["default"]
+        component: Store_1["default"]
     },
     {
         path: '/book/:key',
         exact: true,
         component: Book_1["default"]
     }, {
-        path: "/User",
+        path: "/sign-up",
         exact: true,
         component: User_1["default"]
     }

@@ -95,7 +95,7 @@ function mapDispatchToProps(dispatch) {
     return {
         push: function (loc) { return dispatch(react_router_redux_1.push(loc)); },
         requestBookAndSimilars: function (key) { return dispatch(book_1.requestBookAndSimilars(key)); },
-        removeBook: function () { dispatch(react_router_redux_1.push('/')); dispatch(book_1.removeBook); },
+        removeBook: function () { dispatch(react_router_redux_1.push('/store')); dispatch(book_1.removeBook); },
         addToCart: function (key) { return dispatch(cart_1.addToCart(key)); }
     };
 }

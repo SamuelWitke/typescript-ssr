@@ -41,7 +41,7 @@ exports.requestBooksByTags = function (key, tags) { return (function (dispatch, 
         dispatch(similarEntriesLoadError());
     });
 }); };
-exports.requestBookAndSimilars = function (key) { return (function (dispatch, getState) {
+exports.requestBookAndSimilars = function (key) { return (function (dispatch) {
     var bookPromise = dispatch(exports.requestBook(key));
     bookPromise.then(function (book) { return dispatch(exports.requestBooksByTags(key, book.tags)); });
 }); };

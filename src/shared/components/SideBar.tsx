@@ -20,6 +20,7 @@ class SidebarContainer extends React.Component<any, State> {
     return (
       <div style={{ height: '100vh', width: '100%', overflow: 'hidden', padding: '10px', marginLeft: 'auto', marginRight: "auto" }} >
         <Button onClick={this.handleButtonClick}>Navigation</Button>
+        <Button content='' icon='arrow left' secondary onClick={() => this.props.changeLocation('/')} />
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}

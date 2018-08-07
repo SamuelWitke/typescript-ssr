@@ -32,25 +32,15 @@ var Home = /** @class */ (function (_super) {
             _this.setState({ selectedId: value }, function () { return _this.props.push("/book/" + _this.state.selectedId); });
         };
         _this.state = {
-            selectedId: null,
-            text: [{}]
+            selectedId: null
         };
         _this.props.requestAllBooks();
         return _this;
     }
-    Home.prototype.componentWillReceiveProps = function (nextProps) {
-        if (nextProps.allBooks !== this.props.allBooks) {
-            var allBooks = nextProps.allBooks;
-            if (allBooks) {
-                var text = allBooks.map(function (book) { return { text: book.title, value: book.key }; });
-                this.setState({ text: text });
-            }
-        }
-    };
     Home.prototype.render = function () {
         var _this = this;
-        var text = this.state.text;
         var allBooks = this.props.allBooks;
+        var text = allBooks == null ? [] : allBooks.map(function (book) { return { text: book.title, value: book.key, key: book.key }; });
         var COL1, COL2;
         if (allBooks) {
             COL1 = allBooks.slice(0, allBooks.length / 2);
